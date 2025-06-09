@@ -24,12 +24,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/username/v0-mcp.git"
+    "url": "https://github.com/edwin-anderson/v0-mcp-bridge.git"
   },
   "bugs": {
-    "url": "https://github.com/username/v0-mcp/issues"
+    "url": "https://github.com/edwin-anderson/v0-mcp-bridge/issues"
   },
-  "homepage": "https://github.com/username/v0-mcp#readme",
+  "homepage": "https://github.com/edwin-anderson/v0-mcp-bridge#readme",
   "engines": {
     "node": ">=18.0.0"
   },
