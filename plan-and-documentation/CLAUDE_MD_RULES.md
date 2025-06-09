@@ -12,8 +12,11 @@ This project uses v0 MCP server for UI component generation. Claude Code handles
 - ✅ **shadcn/ui + Tailwind**: Production-ready components using these libraries
 - ✅ **Responsive Design**: Mobile-first, responsive layouts
 - ✅ **Accessibility**: ARIA labels, keyboard navigation, screen reader support
-- ✅ **Visual Polish**: Beautiful, modern UI components
+- ✅ **Visual Polish**: Beautiful, modern UI components that are visually stunning
 - ✅ **Client Interactivity**: Forms, modals, dropdowns, animations
+- ✅ **Smart Component Integration**: Using existing project components when available
+- ✅ **Custom Beautiful Solutions**: Creating polished components beyond shadcn/ui scope
+- ✅ **No Visual Compromises**: Always delivering beautiful UI, never ugly fallbacks
 
 ### What v0 Should NOT Handle:
 - ❌ **Project Structure**: File organization, folder conventions
@@ -165,6 +168,18 @@ Use one of the component generation tools based on the request type:
 }
 ```
 
+**CRITICAL: Understanding existingComponents**
+The `existingComponents` parameter should list ALL components available in the project that v0 can use, regardless of their source:
+- ✅ shadcn/ui components: `["Table", "TableHeader", "TableBody", "Button", "Card"]`
+- ✅ Custom project components: `["CustomButton", "AppHeader", "UserAvatar"]`
+- ✅ Mixed components: `["Button", "Card", "CustomModal", "AppLayout"]`
+
+v0 will intelligently:
+1. Use existing components from this list (respecting your project's components)
+2. Generate new components using shadcn/ui patterns for anything not in the list
+3. Create custom beautiful components if shadcn/ui doesn't have what's needed
+4. NEVER fall back to ugly HTML elements when better options exist
+
 **Multimodal Generation (From Images)** - Use `mcp__v0-mcp__generate_from_image` tool:
 ```json
 {
@@ -195,9 +210,12 @@ Use one of the component generation tools based on the request type:
     "Include company logo",
     "Modify field labels"
   ],
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "existingComponents": ["Button", "Card", "Input", "etc"]
 }
 ```
+
+**IMPORTANT**: Template-based generation also respects `existingComponents` and follows the same visual excellence rules as standard generation.
 
 ### 3. Workflow Selection Guide
 
@@ -280,11 +298,12 @@ Note: This is for improving/clarifying v0-generated code, not for initial genera
 - ✅ **UI Structure Analysis**: Breaking complex interfaces into component pieces
 - ✅ **Visual Component Hierarchy**: Understanding how UI components nest and relate
 - ✅ **Component UI Code**: React/Next.js component implementation
-- ✅ **shadcn/ui Usage**: Proper implementation of shadcn/ui components
-- ✅ **Tailwind Styling**: Beautiful, responsive styles
+- ✅ **Smart Component Selection**: Using existing components and shadcn/ui appropriately
+- ✅ **Custom Beautiful Solutions**: Creating polished components when shadcn/ui isn't sufficient
+- ✅ **Tailwind Styling**: Beautiful, responsive styles with modern patterns
 - ✅ **Accessibility**: ARIA labels, keyboard navigation, screen reader support
-- ✅ **Client Interactivity**: Forms, modals, dropdowns, animations
-- ✅ **Visual Polish**: Modern, production-ready appearance
+- ✅ **Client Interactivity**: Forms, modals, dropdowns, animations with micro-interactions
+- ✅ **Visual Excellence**: Stunning, polished UI that never compromises on quality
 
 **Key Principle**: v0 generates beautiful UI components, Claude Code integrates them into the project.
 
@@ -394,6 +413,17 @@ v0 MCP MUST generate code that:
 - ✅ Uses existing components when specified
 - ✅ Exports components with clear interfaces
 - ✅ Includes proper error boundaries where needed
+
+**Visual Excellence Requirements:**
+v0 MCP MUST ensure all generated components are visually stunning:
+- ✅ **Always Beautiful UI**: Never compromise on visual quality
+- ✅ **Smart Component Selection**:
+  - Use existing components from `existingComponents` list
+  - Use shadcn/ui for new standard components
+  - Create custom beautiful solutions when needed (charts, animations, etc.)
+- ✅ **No Ugly Fallbacks**: Never use raw HTML tables, lists, or forms
+- ✅ **Polish & Delight**: Include transitions, hover states, micro-interactions
+- ✅ **Modern Patterns**: Use contemporary design patterns and visual trends
 
 ### 3. Integration Guidance Requirements
 

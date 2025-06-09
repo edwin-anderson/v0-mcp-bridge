@@ -257,7 +257,22 @@ export class V0McpServer {
             execute: async (args) => {
                 try {
                     const multimodalRequest = {
-                        prompt: `Generate a ${args.name} component based on the provided ${args.images.map(img => img.type).join(', ')}. ${args.description}`,
+                        prompt: `Generate a STUNNING, POLISHED ${args.name} component based on the provided ${args.images.map(img => img.type).join(', ')}.
+
+${args.description}
+
+🎨 VISUAL EXCELLENCE REQUIREMENTS:
+1. Match the design EXACTLY while enhancing with modern polish
+2. Use shadcn/ui components: ${args.existingComponents.join(', ')}
+3. Add subtle animations and smooth transitions
+4. Implement proper hover states and micro-interactions
+5. Ensure pixel-perfect spacing and alignment
+6. Include loading states where appropriate
+7. NEVER compromise on visual quality - make it beautiful!
+
+Framework: ${args.framework}
+Make it ${args.responsive ? 'fully responsive' : 'desktop-optimized'}
+${args.accessibility ? 'Include comprehensive accessibility features' : ''}`,
                         images: args.images,
                         image_analysis_prompt: args.imageAnalysisPrompt,
                         temperature: 0.7
@@ -312,13 +327,25 @@ export class V0McpServer {
                         throw new Error(`Template '${args.template}' not found`);
                     }
                     const variant = args.variant ? template.variants.find(v => v.name === args.variant) : null;
-                    let templatePrompt = `Generate a ${args.name} component using the ${template.name} template pattern.
+                    let templatePrompt = `Generate a STUNNING, POLISHED ${args.name} component using the ${template.name} template pattern.
 
 Template Description: ${template.description}
 Visual Pattern: ${template.visual_pattern}
 Required shadcn/ui components: ${template.shadcn_components.join(', ')}
 Responsive features: ${template.responsive_features.join(', ')}
-Accessibility features: ${template.accessibility_features.join(', ')}`;
+Accessibility features: ${template.accessibility_features.join(', ')}
+
+🎨 VISUAL EXCELLENCE REQUIREMENTS:
+1. Take the template as a starting point and ELEVATE it visually
+2. Add beautiful details: subtle shadows, smooth transitions, hover effects
+3. Implement micro-interactions that delight users
+4. Use modern design patterns and current UI trends
+5. Ensure perfect spacing, alignment, and visual hierarchy
+6. Include thoughtful loading and empty states
+7. NEVER settle for basic - make it visually exceptional!
+
+Available shadcn/ui components: ${args.existingComponents.join(', ')}
+Framework: ${args.framework}`;
                     if (variant) {
                         templatePrompt += `\n\nVariant: ${variant.name} - ${variant.description}
 Variant modifications: ${variant.modifications.join(', ')}`;
